@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taska — To-Do List</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">✦</div>
+        <span>Taska</span>
+      </div>
+
+      <nav class="filters">
+        <button class="filter-btn active" data-filter="all">
+          <span class="f-icon">◈</span> All Tasks
+          <span class="f-count" id="count-all">0</span>
+        </button>
+        <button class="filter-btn" data-filter="today">
+          <span class="f-icon">☀</span> Today
+          <span class="f-count" id="count-today">0</span>
+        </button>
+        <button class="filter-btn" data-filter="active">
+          <span class="f-icon">◉</span> Active
+          <span class="f-count" id="count-active">0</span>
+        </button>
+        <button class="filter-btn" data-filter="completed">
+          <span class="f-icon">✓</span> Completed
+          <span class="f-count" id="count-done">0</span>
+        </button>
+      </nav>
+
+      <div class="priority-legend">
+        <p class="legend-title">Priority</p>
+        <div class="legend-item"><span class="dot high"></span> High</div>
+        <div class="legend-item"><span class="dot mid"></span> Medium</div>
+        <div class="legend-item"><span class="dot low"></span> Low</div>
+      </div>
+
+      <div class="sidebar-progress">
+        <p class="legend-title">Progress</p>
+        <div class="prog-bar-wrap">
+          <div class="prog-bar" id="sidebar-prog"></div>
+        </div>
+        <p class="prog-label" id="prog-label">0 of 0 done</p>
+      </div>
+
+      <button class="clear-btn" id="clear-done-btn">Clear Completed</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <header class="top-bar">
+        <div class="top-left">
+          <h1 class="page-title" id="page-title">All Tasks</h1>
+          <p class="page-date" id="page-date"></p>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">◐</button>
+      </header>
+
+      <!-- ADD TASK -->
+      <div class="add-card">
+        <div class="add-row">
+          <input type="text" id="task-input" placeholder="Add a new task…" maxlength="120" autocomplete="off" />
+          <button class="add-btn" id="add-btn">+</button>
+        </div>
+        <div class="add-meta">
+          <select id="priority-select">
+            <option value="high">🔴 High</option>
+            <option value="mid" selected>🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+          </select>
+          <input type="date" id="due-date" />
+          <input type="text" id="tag-input" placeholder="Tag (optional)" maxlength="20" />
+        </div>
+      </div>
+
+      <!-- SEARCH + SORT -->
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input type="text" id="search-input" placeholder="Search tasks…" />
+        </div>
+        <select id="sort-select">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="priority">By Priority</option>
+          <option value="alpha">A → Z</option>
+        </select>
+      </div>
+
+      <!-- TASK LIST -->
+      <ul class="task-list" id="task-list"></ul>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-state" id="empty-state" style="display:none">
+        <div class="empty-icon">🗂</div>
+        <p>No tasks found</p>
+        <span>Add your first task above</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
